@@ -198,7 +198,7 @@
 - **Method**: `GET`
 - **설명**: 이벤트 보상 요청
 - **Authorization**: 필요
-- **권한**: USER
+- **권한**: 제한 없음
 - **Request Query**:
 
 | 항목     | 타입     | 필수여부 | 비고                                 |
@@ -302,24 +302,65 @@
 
 | 항목      | 타입     | 필수여부 | 비고     |
 |---------|--------|------|--------|
-| eventId | string | 필수   | 대상 이벤트 |
+| questID | string | 필수   | 대상 퀘스트 |
 
 - **Response**:
     - 성공 (200 OK):
 
-## 9. 이벤트 보상 내역 조회
+## 14. 퀘스트 완료 내역 조회
 
-- **URL**: `/event/complete`
+- **URL**: `/quest/history`
 - **Method**: `GET`
-- **설명**: 이벤트 보상 요청
+- **설명**: 퀘스트 완료 목록 조회
 - **Authorization**: 필요
 - **권한**: USER
 - **Request Query**:
 
+- **Response**:
+    - 성공 (200 OK):
+
+## 15. 출석하기
+
+- **URL**: `/attendance`
+- **Method**: `POST`
+- **설명**: 출석하기
+- **Authorization**: 필요
+- **권한**: USER
+- **Request Body**:
+
+- **Response**:
+    - 성공 (200 OK):
+
+## 16. 인벤토리 조회
+
+- **URL**: `/inventory`
+- **Method**: `GET`
+- **설명**: 출석하기
+- **Authorization**: 필요
+- **권한**: 제한 없음
+- **Request Body**:
+
 | 항목     | 타입     | 필수여부 | 비고                                 |
 |--------|--------|------|------------------------------------|
-| page   | number | 선택   | 조회 페이지 (default: 1)                |
 | userId | string | 선택   | 조회 대상 사용자 _id (USER에서는 입력해도 동작 없음) |
 
 - **Response**:
     - 성공 (200 OK):
+
+
+## 16. 사용자 정보 조회 (포인트 등)
+
+- **URL**: `/user`
+- **Method**: `GET`
+- **설명**: 출석하기
+- **Authorization**: 필요
+- **권한**: 제한 없음
+- **Request Body**:
+
+| 항목     | 타입     | 필수여부 | 비고                                 |
+|--------|--------|------|------------------------------------|
+| userId | string | 선택   | 조회 대상 사용자 _id (USER에서는 입력해도 동작 없음) |
+
+- **Response**:
+    - 성공 (200 OK):
+
