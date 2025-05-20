@@ -1,0 +1,57 @@
+services:
+  gateway:
+    build:
+      context: .
+      dockerfile: gateway/Dockerfile
+    container_name: gateway
+    ports:
+      - "3000:3000"
+    depends_on:
+      - auth
+      - event
+    volumes:
+      - ./gateway:/app/gateway
+    environment:
+      - PORT=3000
+      - JWT_SECRET=your_super_secret_key
+      - JWT_REFRESH_SECRET=your_super_secret_key
+    command: npm run start:dev
+
+  auth:
+    build:
+      context: .
+      dockerfile: auth/Dockerfile
+    container_name: auth
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./auth:/app/auth
+    environment:
+      - PORT=3001
+      - JWT_SECRET=your_super_secret_key
+      - JWT_REFRESH_SECRET=your_super_secret_key
+    command: npm run start:dev
+
+  event:
+    build:
+      context: .
+      dockerfile: event/Dockerfile
+    container_name: event
+    ports:
+      - "3002:3002"
+    volumes:
+      - ./event:/app/event
+    environment:
+      - PORT=3002
+    command: npm run start:dev
+
+  mongo:
+    image: mongo:6
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

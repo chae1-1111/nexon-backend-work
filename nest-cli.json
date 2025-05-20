@@ -1,0 +1,38 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps",
+  "monorepo": true,
+  "compilerOptions": {
+    "webpack": false,
+    "tsConfigPath": "tsconfig.build.json"
+  },
+  "projects": {
+    "auth": {
+      "type": "application",
+      "root": "auth",
+      "entryFile": "main",
+      "sourceRoot": "auth/src",
+      "compilerOptions": {
+        "tsConfigPath": "auth/tsconfig.build.json"
+      }
+    },
+    "gateway": {
+      "type": "application",
+      "root": "gateway",
+      "entryFile": "main",
+      "sourceRoot": "gateway/src",
+      "compilerOptions": {
+        "tsConfigPath": "gateway/tsconfig.build.json"
+      }
+    },
+    "event": {
+      "type": "application",
+      "root": "event",
+      "entryFile": "main",
+      "sourceRoot": "event/src",
+      "compilerOptions": {
+        "tsConfigPath": "event/tsconfig.build.json"
+      }
+    }
+  }
+}
